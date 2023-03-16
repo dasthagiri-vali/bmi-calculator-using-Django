@@ -1,0 +1,123 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator: Calculate your BMI</title>
+  <link rel="icon" type="image/x-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYuuZ2E6YmHtsdOr9hJ1JHZwbZHLV4RQKiXni73gZZZQWgHzi8KONXWyFODyP4qxmxStB4WLTUF2EoQs8_QQRGglRrCDTlv6e1L5UbKVl1i7IST4kqYD3T3NIYM38Cj3OoWThJfLKgjNpnYDluxlU2rVx8cAchYb7splxC2QssIpkFNJlaC6VAfl4y-A/s320/bmi-icon.png">
+  <style>
+    html{
+      height: 100%;
+    }
+    body {
+      margin:0;
+      padding:0;
+      font-family: sans-serif;
+      background: linear-gradient(#141e30, #243b55);
+    }
+    .bmi-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 400px;
+      padding: 40px;
+      transform: translate(-50%, -50%);
+      background: rgba(0,0,0,.5);
+      box-sizing: border-box;
+      box-shadow: 0 15px 25px rgba(0,0,0,.6);
+      border-radius: 10px;
+    }
+    
+    .bmi-box h2 {
+      margin: 0 0 30px;
+      padding: 0;
+      color: #fff;
+      text-align: center;
+}
+
+    .bmi-box .input-box {
+      position: relative;
+}
+
+    .bmi-box .input-box input {
+      width: 100%;
+      padding: 10px 0;
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 30px;
+      border: none;
+      border-bottom: 1px solid #fff;
+      outline: none;
+      background: transparent;
+    }
+    .bmi-box .input-box label {
+      position: absolute;
+      top:0;
+      left: 0;
+      padding: 10px 0;
+      font-size: 16px;
+      color: #fff;
+      pointer-events: none;
+      transition: .5s;
+    }
+
+    .bmi-box .input-box input:focus ~ label,
+    .bmi-box .input-box input:valid ~ label{
+      top: -20px;
+      left: 0;
+      color: #03e9f4;
+      font-size: 12px;
+    }
+
+    .result{
+      color: antiquewhite;
+      font-family: calibri;
+    }
+
+    span{
+      font-family: calibri;
+      color:chartreuse;
+      font-size: 30px;
+    }
+
+    .button_design{
+      border-radius: 70px;
+      padding: 5px;
+      border-color: greenyellow;
+      background-color:black;
+      color: white;
+      font-size: 15px;
+    }
+    .animate:hover{
+      background-color:greenyellow;
+      color: black;
+      
+    }
+
+  </style>
+</head>
+<body>
+  <div class="bmi-box">
+    <h2>BMI Calculator</h2>
+    <form action="/" method="POST">
+      {% csrf_token%}
+
+      <div class="input-box">
+        <input type="text" name="height" required="" autocomplete="off">
+        <label>Enter Your Height (in CMs)</label>
+      </div>
+
+      <div class="input-box">
+        <input type="text" name="weight" required="" autocomplete="off ">
+        <label>Enter Your Weight (in KGs)</label>
+      </div>
+      
+      <input type="submit" value="Submit" class="animate button_design">
+
+      <h3 class="result">Your BMI: <span>{{result}}</span></h3>
+      <h3 class="result">BMI Category: <span>{{category}}</span></h3>
+    
+    </form>
+  </div>
+</body>
+</html>
